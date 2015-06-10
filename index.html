@@ -41,10 +41,10 @@
         }
     </style>
     <div id="wrapper">
-        <h1 id="title">Title</h1>
-        <h2 id="subtitle">Subtitle</h2>
-        <p id="message">Message</p>
-        <h3 id="seconds">Seconds</h3>
+        <h1 id="title" style="display: none;">Title</h1>
+        <h2 id="subtitle" style="display: none;">Subtitle</h2>
+        <p id="message" style="display: none;">Message</p>
+        <h3 id="seconds" style="display: none;">Seconds</h3>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var QueryString = function() {
@@ -67,12 +67,16 @@
                 var params = ['title', 'subtitle', 'message'];
                 for (var i = 0; i < 3; i++) {
                     if (QueryString.hasOwnProperty(params[i])) {
-                        document.getElementById(params[i]).innerHTML = decodeURIComponent(QueryString[params[i]]);
-                    } else {
-                        document.getElementById(params[i]).style.display = "none";
+                        var value = decodeURIComponent(QueryString[params[i]]);
+                        document.getElementById(params[i]).innerHTML = value;
+                        if (params[i] == 'title') {
+                            document.title = value;
+                        }
+                        document.getElementById(params[i]).style.display = "inline";
                     }
                 }
                 if (QueryString.hasOwnProperty('seconds')) {
+                    document.getElementById('seconds').style.display = "inline";
                     var count = parseInt(QueryString.seconds);
                     var counter = setInterval(timer, 1000);
                     function timer() {
