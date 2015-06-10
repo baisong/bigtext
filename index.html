@@ -72,11 +72,11 @@
                         if (params[i] == 'title') {
                             document.title = value;
                         }
-                        document.getElementById(params[i]).style.display = "inline";
+                        document.getElementById(params[i]).style.display = "block";
                     }
                 }
                 if (QueryString.hasOwnProperty('seconds')) {
-                    document.getElementById('seconds').style.display = "inline";
+                    document.getElementById('seconds').style.display = "block";
                     var count = parseInt(QueryString.seconds);
                     var counter = setInterval(timer, 1000);
                     function timer() {
