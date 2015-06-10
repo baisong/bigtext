@@ -82,6 +82,7 @@
                     function timer() {
                         count = count - 1;
                         if (count <= 0) {
+                            document.getElementById('seconds').innerHTML = 'Time\'s up!';
                             clearInterval(counter);
                             return;
                         }
